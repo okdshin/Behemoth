@@ -1,5 +1,5 @@
-#ifndef BEHEMOTH_BASIC_BIG_NATURAL_H
-#define BEHEMOTH_BASIC_BIG_NATURAL_H
+#ifndef BEHEMOTH_BIG_NATURAL_BASIC_BIG_NATURAL_H
+#define BEHEMOTH_BIG_NATURAL_BASIC_BIG_NATURAL_H
 //20140606
 #include <vector>
 #include <boost/static_assert.hpp>
@@ -73,4 +73,4 @@ namespace behemoth {
 	}// big_naturals
 }// namespace behemoth
 
-#endif //BEHEMOTH_BASIC_BIG_NATURAL_H
+#endif //BEHEMOTH_BIG_NATURAL_BASIC_BIG_NATURAL_H

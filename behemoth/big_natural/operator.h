@@ -305,4 +305,4 @@ namespace behemoth {
 	}// namespace big_naturals
 }// namespace behemoth
 
-#endif //BEHEMOTH_OPERATOR_H
+#endif //BEHEMOTH_BIG_NATURAL_OPERATOR_H
