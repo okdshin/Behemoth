@@ -1,5 +1,5 @@
-#ifndef BEHEMOTH_OPERATOR_H
-#define BEHEMOTH_OPERATOR_H
+#ifndef BEHEMOTH_BIG_NATURAL_OPERATOR_H
+#define BEHEMOTH_BIG_NATURAL_OPERATOR_H
 //20140606
 #include <cassert>
 #include <behemoth/big_natural/traits_and_policy.h>
