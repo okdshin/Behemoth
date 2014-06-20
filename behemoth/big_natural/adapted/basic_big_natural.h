@@ -1,11 +1,14 @@
-#ifndef BEHEMOTH_BIG_NATURAL_BASIC_BIG_NATURAL_H
-#define BEHEMOTH_BIG_NATURAL_BASIC_BIG_NATURAL_H
+#ifndef BEHEMOTH_BIG_NATURAL_ADAPTED_BASIC_BIG_NATURAL_H
+#define BEHEMOTH_BIG_NATURAL_ADAPTED_BASIC_BIG_NATURAL_H
 //20140606
 #include <vector>
 #include <boost/static_assert.hpp>
 #include <behemoth/cstdint.h>
-#include <behemoth/big_natural/utility.h>
-#include <behemoth/mpl.h>
+#include <behemoth/convert_to_string.h>
+#include <behemoth/big_natural/construct.h>
+#include <behemoth/big_natural/access.h>
+#include <behemoth/big_natural/check.h>
+#include <behemoth/big_natural/modify.h>
 namespace behemoth {
 	template<typename DigitContainer, 
 		typename DigitContainer::value_type RadixValue>
@@ -21,9 +24,10 @@ namespace behemoth {
 		BOOST_STATIC_ASSERT(RadixValue == 16 || RadixValue == 256 || RadixValue == 65536);
 
 		basic_big_natural() : digits_(1, 0) {}
+		basic_big_natural(std::size_t size) : digits_(size, 0) {}
 		basic_big_natural(const DigitContainer& digits) : digits_(digits) {
 			BOOST_STATIC_ASSERT(
-				behemoth::big_naturals::radix<DigitContainer>::value == radix_value);
+				behemoth::big_naturals::radix_value<DigitContainer>::value == radix_value);
 		}
 
 		iterator begin() { return digits_.begin(); }
@@ -63,14 +67,25 @@ namespace behemoth {
 			a.swap(b);
 		}
 		template<typename DigitContainer, typename DigitContainer::value_type RadixValue>
-		struct radix<behemoth::basic_big_natural<DigitContainer, RadixValue> > {
+		struct radix_value<behemoth::basic_big_natural<DigitContainer, RadixValue> > {
 			typedef behemoth::basic_big_natural<DigitContainer, RadixValue> 
 				basic_big_natural;
 			static const typename behemoth::big_naturals::
 					value_type<basic_big_natural>::type 
 				value = basic_big_natural::radix_value;
 		};
+		namespace policy {
+			template<typename DigitContainer, 
+				typename DigitContainer::value_type RadixValue>
+			struct construct<behemoth::basic_big_natural<DigitContainer, RadixValue> > {
+				static behemoth::basic_big_natural<DigitContainer, RadixValue> 
+				call(std::size_t size) {
+					return behemoth::basic_big_natural<DigitContainer, RadixValue>(size);
+				}
+			};
+		}// namespace policy
 	}// big_naturals
+	typedef basic_big_natural<std::vector<behemoth::uint_least32_t>, 65536> big_natural;
 }// namespace behemoth
 
-#endif //BEHEMOTH_BIG_NATURAL_BASIC_BIG_NATURAL_H
+#endif //BEHEMOTH_BIG_NATURAL_ADAPTED__BASIC_BIG_NATURAL_H

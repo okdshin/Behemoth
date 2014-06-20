@@ -36,7 +36,7 @@ namespace behemoth {
 					while((!*i) && i != back){
 						++zero_count; ++i;	
 					}
-					bn.resize(bn.size()-zero_count);
+					behemoth::big_naturals::resize(bn, bn.size()-zero_count);
 				}
 			};
 		}// namespace policy

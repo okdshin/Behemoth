@@ -15,22 +15,55 @@ namespace behemoth {
 		};
 
 		//
-		// radix
+		// radix_value
 		//
 		//default radix values
-		template<typename BigNatural>struct radix_impl {};
-		template<>struct radix_impl<behemoth::uint_least8_t> 
+		template<typename BigNatural>struct radix_value_impl {};
+		template<>struct radix_value_impl<behemoth::uint_least8_t> 
 			{ static const uint_least8_t value = 16; };
-		template<>struct radix_impl<behemoth::uint_least16_t> 
+		template<>struct radix_value_impl<behemoth::uint_least16_t> 
 			{ static const uint_least16_t value = 256; };
-		template<>struct radix_impl<behemoth::uint_least32_t> 
+		template<>struct radix_value_impl<behemoth::uint_least32_t> 
 			{ static const uint_least32_t value = 65536; };
 		template<typename BigNatural>
-		struct radix {
+		struct radix_value {
 			typedef typename behemoth::big_naturals::
 				value_type<BigNatural>::type value_type;
 			static const value_type value = 
-				behemoth::big_naturals::radix_impl<value_type>::value;
+				behemoth::big_naturals::radix_value_impl<value_type>::value;
+		};
+
+		//
+		// radix_digit_num
+		//
+		template<typename BigNatural>struct radix_digit_num_impl {};
+		template<>struct radix_digit_num_impl<behemoth::uint_least8_t> 
+			{ static const uint_least8_t value = 4; };
+		template<>struct radix_digit_num_impl<behemoth::uint_least16_t> 
+			{ static const uint_least16_t value = 8; };
+		template<>struct radix_digit_num_impl<behemoth::uint_least32_t> 
+			{ static const uint_least32_t value = 16; };
+		template<typename BigNatural>
+		struct radix_digit_num {
+			typedef typename behemoth::big_naturals::
+				value_type<BigNatural>::type value_type;
+			static const value_type value = 
+				behemoth::big_naturals::radix_digit_num_impl<value_type>::value;
+		};
+
+		//
+		// max_value
+		//
+		template<typename BigNatural>
+		struct max_value {
+			/*
+			typedef typename behemoth::big_naturals::
+				radix_value<BigNatural>::value_type value_type;
+				*/
+			typedef typename behemoth::big_naturals::
+				value_type<BigNatural>::type value_type;
+			static const value_type value =
+				behemoth::big_naturals::radix_value<BigNatural>::value-1;
 		};
 
 		//

@@ -1,8 +1,8 @@
-#ifndef BEHEMOTH_BIG_NATURAL_UTILITY_H
-#define BEHEMOTH_BIG_NATURAL_UTILITY_H
+#ifndef BEHEMOTH_BIG_NATURAL_CONVERT_TO_STRING_H
+#define BEHEMOTH_BIG_NATURAL_CONVERT_TO_STRING_H
 //20140606
 #include <sstream>
-#include <behemoth/big_natural/access.h>
+#include <behemoth/big_natural.h>
 namespace behemoth {
 	namespace big_naturals {
 		template<typename BigNatural>
@@ -19,4 +19,4 @@ namespace behemoth {
 	}// namespace big_naturals
 }// namespace behemoth
 
-#endif //BEHEMOTH_BIG_NATURAL_UTILITY_H
+#endif //BEHEMOTH_BIG_NATURAL_CONVERT_TO_STRING_H

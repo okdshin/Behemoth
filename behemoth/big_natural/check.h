@@ -1,6 +1,7 @@
 #ifndef BEHEMOTH_BIG_NATURAL_CHECK_H
 #define BEHEMOTH_BIG_NATURAL_CHECK_H
 //20140611
+#include <behemoth/mpl.h>
 #include <behemoth/big_natural/access.h>
 namespace behemoth {
 
