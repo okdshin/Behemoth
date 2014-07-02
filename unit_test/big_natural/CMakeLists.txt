@@ -1,0 +1,3 @@
+add_executable(unit_test_big_natural big_natural.cpp)
+set_target_properties(unit_test_big_natural PROPERTIES OUTPUT_NAME "big_natural")
+add_test(unit_test_big_natural big_natural)

@@ -9,10 +9,10 @@
 
 namespace behemoth {
 	namespace assert_impl {
-		inline bool assertion_failed(const char* message) {
+		bool assertion_failed(const char* message) {
 			return (std::cerr << message << std::endl), std::abort(), false;
 		}
-		inline bool assertion_check(bool cond, const char* message) {
+		bool assertion_check(bool cond, const char* message) {
 			return cond ? true : behemoth::assert_impl::assertion_failed(message);
 		}
 	}// namespace assert_impl
